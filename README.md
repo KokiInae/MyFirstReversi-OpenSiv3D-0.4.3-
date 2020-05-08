@@ -1,9 +1,9 @@
 # MyFirstReversi
 OpenSiv3Dで作成したリバーシです
 
--開発環境
-OpenSiv3D(0.4.3)
-Visual Studio 2019
+開発発環
+- OpenSiv3D(0.4.3)
+- Visual Studio 2019
 
 ファイルの説明
 
@@ -12,5 +12,5 @@ Visual Studio 2019
 - Game.cpp:Boardクラスを継承したクラス。プレイヤーの色決め、手番交代、一手戻るなどの関数をBoardクラスから追加しています。
 - Game.h:ゲームクラスのヘッダーファイル。
 - Main.cpp:シーン間の管理、文字の描画、GUIの描画、GUIへの入力に応じた関数呼び出しなどをします。
-- Reversi.exe:オセロの実行ファイルです。これ単体で動作します。
+- Reversi.exe:つくったオセロの実行ファイルです。これ単体で動作します。
 - README.md:ファイルの説明や注釈を書いています。
