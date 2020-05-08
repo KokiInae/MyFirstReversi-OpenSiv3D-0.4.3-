@@ -59,11 +59,11 @@ void Main()
 			SimpleGUI::Slider(adj, temp_board_size, 4.0, 30.0, Vec2(30, 395), 35, 350);
 			//double型からint型にキャスト
 			adjust_BOARD_SIZE = temp_board_size;
-			adj = Format(adjust_BOARD_SIZE);
 			//adjustが奇数なら-1引いて偶数になるように
 			if (adjust_BOARD_SIZE % 2 != 0) {
 				adjust_BOARD_SIZE--;
 			}
+			adj = Format(adjust_BOARD_SIZE);
 
 			if (SimpleGUI::Button(U"プレイ！", Vec2(20, 500))) {
 				//盤面の初期化
