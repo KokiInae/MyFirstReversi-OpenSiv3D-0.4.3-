@@ -21,15 +21,19 @@ void Main()
 	const int SEAT_SIZE = 600;
 	//シートの基準点(左上)
 	const int PIT = 50;
-	int decision_player = 0;
+
 	//Boardクラスを継承したGameクラスの作成
-	Game game(BOARD_SIZE, SEAT_SIZE, PIT);
+	Game game;
+
+	double temp_board_size = 8;
+	int adjust_BOARD_SIZE;
+	String adj;
 
 	int SCENE = 0;
 	const int TITLE = 0;
 	const int PLAYGAME = 1;
 	//indexでラジオボタンを識別する
-	size_t index0 = 1;
+	size_t index0 = 0;
 	//選択肢を選ぶと選んでいる選択肢がひとつ目かnつ目かの状態が変わる?
 	const Array<String>options = { U"黒が先行", U"白が先行" };
 	const Array<int>colors = { BLACK,WHITE };
@@ -37,7 +41,8 @@ void Main()
 	const Font subtitle(40);
 	const Font score(70);
 	const Font turn(50);
-
+	const Font small(21);
+	const Rect small_rect = small(U"盤の一辺の大きさ").region(30, 365);
 
 	while (System::Update())
 	{
@@ -47,9 +52,22 @@ void Main()
 			fonttitle(U"リバーシ").drawBase(20, 180, Color(90, 195, 217));
 			subtitle(U"(一人二役)").drawBase(600, 180, Color(90, 195, 217));
 
-			SimpleGUI::RadioButtons(index0, options, Vec2(20, 400));
+			SimpleGUI::RadioButtons(index0, options, Vec2(30, 280));
+
+			small_rect.draw(Palette::White);
+			small(U"盤の一辺の大きさ").draw(Vec2(30, 365), Palette::Black);
+			SimpleGUI::Slider(adj, temp_board_size, 4.0, 30.0, Vec2(30, 395), 35, 350);
+			//double型からint型にキャスト
+			adjust_BOARD_SIZE = temp_board_size;
+			adj = Format(adjust_BOARD_SIZE);
+			//adjustが奇数なら-1引いて偶数になるように
+			if (adjust_BOARD_SIZE % 2 != 0) {
+				adjust_BOARD_SIZE--;
+			}
 
 			if (SimpleGUI::Button(U"プレイ！", Vec2(20, 500))) {
+				//盤面の初期化
+				game.make_Reversi_Board(adjust_BOARD_SIZE, SEAT_SIZE, PIT);
 				//プレイヤーの色決め
 				game.set_player(colors[index0]);
 
@@ -83,7 +101,7 @@ void Main()
 			
 			game.draw(game.PLAYER);
 			game.flip_stone();
-			
+
 			break;
 		}
 	}

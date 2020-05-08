@@ -25,8 +25,10 @@ public:
 	//描画に使うための石(図形)BOARD_SIZE * BOARD_SIZE個ある
 	Grid<Circle>stones;
 
-	//ボードのコンストラクタ
+	//ボードのコンストラクタ(引数全部乗せ、make_boardいらない)
 	Board(const int& _BOARD_SIZE, const int& _SEAT_SIZE, const int& _PIT);
+	//ボードのコンストラクタ(引数ゼロ、make_Reversi_Boardに使われる)こっちをつかっている
+	Board();
 
 	//ボード上の石を描画する
 	void draw(const int& _player);

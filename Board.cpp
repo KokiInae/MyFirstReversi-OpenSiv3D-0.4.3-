@@ -35,12 +35,20 @@ Board::Board(const int& _BOARD_SIZE, const int& _SEAT_SIZE, const int& _PIT){
 
 	Rect _seat(PIT, PIT, SEAT_SIZE);
 	seat = _seat;
+
+	Array<Line>temp_tate;
+	Array<Line>temp_yoko;
 	for (int i = SEAT_SIZE / BOARD_SIZE; i < SEAT_SIZE; i += SEAT_SIZE / BOARD_SIZE) {
 		Line a(PIT + i, PIT, PIT + i, PIT + SEAT_SIZE);
 		Line b(PIT, PIT + i, PIT + SEAT_SIZE, PIT + i);
-		lines_tate.emplace_back(a);
-		lines_yoko.emplace_back(b);
+		temp_tate.emplace_back(a);
+		temp_yoko.emplace_back(b);
 	}
+	lines_tate = temp_tate;
+	lines_yoko = temp_yoko;
+}
+
+Board::Board() {
 
 }
 
