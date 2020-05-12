@@ -1,4 +1,4 @@
-# MyFirstReversi
+# MyFirstReversi(OpneSiv3D 0.4.3)
 OpenSiv3Dで作成したリバーシです
 
 開発発環
